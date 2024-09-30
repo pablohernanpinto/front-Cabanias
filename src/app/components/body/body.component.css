@@ -1,0 +1,29 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+
+.background {
+    background-image: url('./../../../assets/inspiracional-azul-marino-ago.png'); /* Ruta de la imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    height: 70vh; /* Hace que el contenedor tenga la altura completa de la ventana */
+    display: flex;
+    border-bottom-left-radius:50px ;
+    border-bottom-right-radius:50px ;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+h1 {
+    color: black    ; /* Ajusta el color del texto para que sea visible sobre la imagen */
+}
+.busqueda{
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}

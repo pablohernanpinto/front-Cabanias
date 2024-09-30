@@ -1,4 +1,15 @@
-.body{
+.example-spacer {
+    flex: 1 1 auto;
+    
+}
+.example-icon{
+    color: white;
+}
+
+.header{
+
+    background-color: rgb(16, 0, 79);
     padding: 0 100px; /* Padding izquierdo y derecho de 20px */
     box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total del contenedor */
 }
+
