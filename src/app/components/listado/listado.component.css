@@ -1,31 +1,17 @@
-
-
 .background {
-    background-image: url('./../../../assets/inspiracional-azul-marino-ago.png'); /* Ruta de la imagen */
-    background-size: cover; /* Hace que la imagen cubra todo el área */
-    background-position: center; /* Centra la imagen */
-    height: 100vh; /* Hace que el contenedor tenga la altura completa de la ventana */
+    background-image: url('./../../../assets/inspiracional-azul-marino-ago.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
     display: flex;
-
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente fila */
     justify-content: center;
-    align-items: center;
-    padding-left: 20px;
-
-
-
-  }
-  
-h1 {
-    color: black    ; /* Ajusta el color del texto para que sea visible sobre la imagen */
-}
-.busqueda{
-    background-color: aliceblue;
+    align-items: flex-start; /* Alinea los elementos al inicio de la pantalla */
     padding: 20px;
-    border-radius: 10px;
-    width: 80%;
+    gap: 20px; /* Espacio entre tarjetas */
 }
 
-.tajetas{
-    width: 30%;
+.tarjetas {
+    width: 30%; /* Ajuste de tamaño de las tarjetas */
+    min-width: 250px; /* Tamaño mínimo para tarjetas */
 }
-

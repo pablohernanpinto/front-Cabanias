@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MatMenuModule} from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,10 @@ import {MatMenuModule} from '@angular/material/menu';
   
 })
 export class HeaderComponent {
+  constructor(private router: Router){
 
+  }
+  inicio(){
+    this.router.navigate(['/'])
+  }
 }
