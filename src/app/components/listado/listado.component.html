@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="background">
+        <div *ngFor="let elemento of datosRecibidos" class="tajetas">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title-group>
+                        <mat-card-title>{{ elemento.nombre }}</mat-card-title>
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="caracteristicas">
+                        Calefont: {{elemento.calefont}}<br>
+                        Camas dobles: {{elemento.camas_dobles}}<br>
+                        Camas individuales: {{elemento.camas_individuales}}<br>
+                        Cocina: {{elemento.cocina}}<br>
+                        Precio por noche: {{elemento.precio_noche}}<br>
+                        Tipo: {{elemento.tipo}}<br>
+                    </div>
+                </mat-card-content>
+                <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Reservar</button>
+
+            </mat-card>
+        </div>
+
+    </div>
+</body>
+
+</html>

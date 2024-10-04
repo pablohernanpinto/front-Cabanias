@@ -1,13 +1,55 @@
-<mat-form-field>
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date">
-      <input matEndDate placeholder="End date">
-    </mat-date-range-input>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+    <!-- Rango de Fechas -->
+    <mat-form-field style="flex: 1;">
+      <mat-label>Rango de fechas</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Fecha de inicio" formControlName="fecha_inicio">
+        <input matEndDate placeholder="Fecha de fin" formControlName="fecha_termino">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
 
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
-<br><br>
-  <button style="background-color: rgb(191, 12, 60);color: white;" mat-raised-button>Buscar</button>
-  
+    <!-- Camas Individuales -->
+    <mat-form-field style="flex: 1;">
+      <mat-label>Camas individuales</mat-label>
+      <mat-select formControlName="camas_individuales" multiple>
+        <mat-select-trigger>
+          {{ myForm.get('camas_individuales')?.value?.[0] || '' }}
+          <span *ngIf="(myForm.get('camas_individuales')?.value?.length || 0) > 1" class="example-additional-selection">
+            (+{{ (myForm.get('camas_individuales')?.value?.length || 0) - 1 }} {{ myForm.get('camas_individuales')?.value?.length === 2 ? 'otra' : 'otras' }})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let cama of camasIndividualesList" [value]="cama">
+          {{ cama }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Camas Dobles -->
+    <mat-form-field style="flex: 1;">
+      <mat-label>Camas dobles</mat-label>
+      <mat-select formControlName="camas_dobles" multiple>
+        <mat-select-trigger>
+          {{ myForm.get('camas_dobles')?.value?.[0] || '' }}
+          <span *ngIf="(myForm.get('camas_dobles')?.value?.length || 0) > 1" class="example-additional-selection">
+            (+{{ (myForm.get('camas_dobles')?.value?.length || 0) - 1 }} {{ myForm.get('camas_dobles')?.value?.length === 2 ? 'otra' : 'otras' }})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let cama of camasDoblesList" [value]="cama">
+          {{ cama }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Checkbox Calefón -->
+    <p><mat-checkbox formControlName="calefont">Calefón</mat-checkbox></p>
+
+    <!-- Checkbox Cocina -->
+    <p><mat-checkbox formControlName="cocina">Cocina</mat-checkbox></p>
+  </div>
+  <!-- Botón de Buscar -->
+  <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Buscar</button>
+</form>

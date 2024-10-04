@@ -15,18 +15,29 @@ import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-po
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
+import { ListadoComponent } from './components/listado/listado.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BodyComponent,
-    BuscarPorFechaComponent
+    BuscarPorFechaComponent,
+    ListadoComponent
   ],
   imports: [
+    MatCardModule,
+    HttpClientModule,
+    ReactiveFormsModule ,
+    MatCheckboxModule,
+    MatSelectModule,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatDatepickerModule,
