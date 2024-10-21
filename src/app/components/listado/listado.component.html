@@ -2,34 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Cabañas</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <div class="background">
-        <div *ngFor="let elemento of datosRecibidos" class="tarjetas">
-            <mat-card class="example-card" appearance="outlined">
-                <mat-card-header>
-                    <mat-card-title-group>
-                        <mat-card-title>{{ elemento.nombre }}</mat-card-title>
-                    </mat-card-title-group>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="caracteristicas">
-                        Calefont: {{elemento.calefont}}<br>
-                        Camas dobles: {{elemento.camas_dobles}}<br>
-                        Camas individuales: {{elemento.camas_individuales}}<br>
-                        Cocina: {{elemento.cocina}}<br>
-                        Precio por noche: {{elemento.precio_noche}}<br>
-                        Tipo: {{elemento.tipo}}<br>
-                    </div>
-                </mat-card-content>
-                <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Reservar</button>
-            </mat-card>
+  <br>
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+    
+    <ng-container *ngFor="let column of columnsToDisplay" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef> {{ columnNamesMap[column] }} </th>
+      <td mat-cell *matCellDef="let element">
+        <!-- Verificar si el valor es booleano para mostrar "Sí" o "No" -->
+        <ng-container *ngIf="element[column] === true; else noValue">Sí</ng-container>
+        <ng-template #noValue>
+          <ng-container *ngIf="element[column] === false; else default">{{ 'No' }}</ng-container>
+        </ng-template>
+        <ng-template #default>
+          {{ element[column] }} <!-- Mostrar el valor normalmente si no es booleano -->
+        </ng-template>
+      </td>
+    </ng-container>
+    
+
+    <!-- Columna expand -->
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button aria-label="expand row"
+          (click)="expandedElement = expandedElement === element ? null : element; $event.stopPropagation()">
+          <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+          <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Detalles de la fila expandida -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+        <div class="example-element-detail" [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
+
+          <div class="example-element-description">
+            <p>Camas Dobles: {{element.camas_dobles}}</p>
+            <p>Camas Individuales: {{element.camas_individuales}}</p>
+            <p>Calefont: {{element.calefont ? 'Sí' : 'No'}}</p>
+            <p>Cocina: {{element.cocina ? 'Sí' : 'No'}}</p>
+            <p>Disponibilidad: {{element.disponibilidad ? 'Disponible' : 'No Disponible'}}</p>
+            <br>
+            <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button>
+              Reiniciar filtros
+            </button>
+          </div>
         </div>
-    </div>
+      </td>
+    </ng-container>
+
+    <!-- Encabezado -->
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+    <!-- Fila de datos -->
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand" class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+
+    <!-- Fila expandida -->
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  </table>
+
 </body>
 
 </html>

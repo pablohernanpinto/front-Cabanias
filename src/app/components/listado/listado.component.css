@@ -1,17 +1,47 @@
-.background {
-    background-image: url('./../../../assets/inspiracional-azul-marino-ago.png');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente fila */
-    justify-content: center;
-    align-items: flex-start; /* Alinea los elementos al inicio de la pantalla */
-    padding: 20px;
-    gap: 20px; /* Espacio entre tarjetas */
+table {
+    width: 100%;
 }
 
-.tarjetas {
-    width: 30%; /* Ajuste de tamaño de las tarjetas */
-    min-width: 250px; /* Tamaño mínimo para tarjetas */
+tr.example-detail-row {
+    height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.example-element-row td {
+    border-bottom-width: 0;
+}
+
+.example-element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+}
+
+.example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.example-element-description {
+    padding: 16px;
+}
+
+.example-element-description-attribution {
+    opacity: 0.5;
 }

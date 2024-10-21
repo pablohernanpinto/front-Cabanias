@@ -17,8 +17,8 @@ export class BuscarPorFechaComponent {
 
   data: any = [];
   myForm: FormGroup; // Define la variable myForm como FormGroup
-  camasIndividualesList = [1, 2, 3];
-  camasDoblesList = [1, 2];
+  camasIndividualesList = [0,1,2,3];
+  camasDoblesList = [0,1,2];
   enviar:any = []
   constructor(private fb: FormBuilder, 
     private http: HttpClient,
@@ -38,7 +38,6 @@ export class BuscarPorFechaComponent {
   arregloData(){
     if (this.myForm.value.camas_individuales == ''){
       this.myForm.value.camas_individuales = [0]
-      console.log(this.myForm.value.camas_individuales)
     }
   }
 
@@ -47,8 +46,21 @@ export class BuscarPorFechaComponent {
     this.enviar = []
     //this.arregloData()
     let verificacion:boolean
-    this.myForm.value.camas_individuales.push(0)
-    this.myForm.value.camas_dobles.push(0)
+    if(this.myForm.value.camas_individuales == ''){
+      this.myForm.value.camas_individuales.push(0)
+      this.myForm.value.camas_individuales.push(1)
+      this.myForm.value.camas_individuales.push(2)
+      this.myForm.value.camas_individuales.push(3)
+      
+    }
+    if(this.myForm.value.camas_dobles==''){
+      this.myForm.value.camas_dobles.push(0)
+      this.myForm.value.camas_dobles.push(1)
+      this.myForm.value.camas_dobles.push(2)
+
+    }
+
+
     for (let i = 0; i < this.data.length; i++) {
       if(this.myForm.value.camas_individuales.includes(this.data[i].camas_individuales)){
         verificacion = true
@@ -81,18 +93,24 @@ export class BuscarPorFechaComponent {
       }
 
     }
+    console.log(this.myForm.value,'estoo')
     console.log(this.enviar)
-
+    this.data= this.enviar
     this.dataService.updateData(this.enviar);
-    this.router.navigate(['/listado']);
   }
   
+  limpiarFiltro(){
+    window.location.reload();
+
+  }
 
 
   ngOnInit() {
     const url = 'http://localhost:3000/estancias';
     this.http.get(url).subscribe((data: any) => {
       this.data = data
+      console.log(this.data,'aquiii')
+      this.dataService.updateData(this.data);
 
     });
   }

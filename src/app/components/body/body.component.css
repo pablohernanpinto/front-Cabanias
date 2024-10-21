@@ -2,20 +2,22 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: aliceblue;
   }
 
 
 .background {
-    background-image: url('./../../../assets/inspiracional-azul-marino-ago.png'); /* Ruta de la imagen */
+    /* background-image: url('./../../../assets/inspiracional-azul-marino-ago.png'); */ /* Ruta de la imagen */
     background-size: cover; /* Hace que la imagen cubra todo el área */
     background-position: center; /* Centra la imagen */
     height: 100vh; /* Hace que el contenedor tenga la altura completa de la ventana */
     display: flex;
-
+    padding-top: 20px;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     padding-left: 20px;
 
+    background-color: aliceblue;
 
 
   }
@@ -27,5 +29,5 @@ h1 {
     background-color: aliceblue;
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
+
 }

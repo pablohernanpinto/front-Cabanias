@@ -21,6 +21,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { ListadoComponent } from './components/listado/listado.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {MatCardModule} from '@angular/material/card';
     ListadoComponent
   ],
   imports: [
+    MatExpansionModule,
     MatCardModule,
     HttpClientModule,
     ReactiveFormsModule ,
@@ -46,7 +50,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

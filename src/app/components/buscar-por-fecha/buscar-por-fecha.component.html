@@ -51,5 +51,19 @@
     <p><mat-checkbox formControlName="cocina">Cocina</mat-checkbox></p>
   </div>
   <!-- Botón de Buscar -->
-  <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Buscar</button>
+  <div style="display: flex; flex-direction: row; gap: 10px;">
+
+    <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Buscar</button>
+  
+    <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button  (click)="limpiarFiltro()">Reiniciar filtros</button>
+
+
+  </div>
+
 </form>
+
+
+
+
+
+<app-listado [data]="data"></app-listado>
