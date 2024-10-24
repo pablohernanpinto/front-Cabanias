@@ -23,7 +23,13 @@ import { ListadoComponent } from './components/listado/listado.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmacionBorradoComponent } from './components/modals/confirmacion-borrado/confirmacion-borrado.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +37,16 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HeaderComponent,
     BodyComponent,
     BuscarPorFechaComponent,
-    ListadoComponent
+    ListadoComponent,
+    ConfirmacionBorradoComponent
   ],
   imports: [
+    MatDialogModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CdkTableModule,
     MatExpansionModule,
     MatCardModule,
     HttpClientModule,

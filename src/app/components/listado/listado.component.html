@@ -45,15 +45,30 @@
         <div class="example-element-detail" [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
 
           <div class="example-element-description">
+            <p>id: {{element.id_estancia}}</p>
             <p>Camas Dobles: {{element.camas_dobles}}</p>
             <p>Camas Individuales: {{element.camas_individuales}}</p>
             <p>Calefont: {{element.calefont ? 'Sí' : 'No'}}</p>
             <p>Cocina: {{element.cocina ? 'Sí' : 'No'}}</p>
             <p>Disponibilidad: {{element.disponibilidad ? 'Disponible' : 'No Disponible'}}</p>
             <br>
-            <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button>
-              Reiniciar filtros
-            </button>
+
+
+            <div class="botonesSlide">
+              <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button>
+                Reservar
+              </button>
+              <button *ngIf="sharedService.isChecked" style="background-color: rgb(209, 186, 11); color: white;" mat-raised-button>
+                modificar
+              </button>
+              <button *ngIf="sharedService.isChecked"  (click)="openDialog(element.id_estancia)" style="background-color: rgb(6, 120, 29); color: white;" mat-raised-button>
+                Eliminar
+              </button>
+             <!--  {{element.id_estancia}} -->
+            </div>
+
+            
+
           </div>
         </div>
       </td>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EnvioDataService } from '../envio-data.service';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-buscar-por-fecha',
@@ -23,7 +24,9 @@ export class BuscarPorFechaComponent {
   constructor(private fb: FormBuilder, 
     private http: HttpClient,
     private dataService: EnvioDataService,
-    private router: Router
+    private router: Router,
+    public sharedService: SharedService,
+
   ) {
     this.myForm = this.fb.group({
       fecha_inicio: [''], // Ajustado a "fecha_inicio"

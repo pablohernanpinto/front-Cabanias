@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-body',
@@ -7,5 +7,10 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./body.component.css'],
 })
 export class BodyComponent {
+  constructor(
+    public sharedService: SharedService,
+  ){
+
+  }
 
 }

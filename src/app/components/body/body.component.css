@@ -11,12 +11,11 @@ body, html {
     background-size: cover; /* Hace que la imagen cubra todo el área */
     background-position: center; /* Centra la imagen */
     height: 100vh; /* Hace que el contenedor tenga la altura completa de la ventana */
-    display: flex;
-    padding-top: 20px;
+
     justify-content: center;
     align-items: baseline;
-    padding-left: 20px;
 
+    padding: 40px;
     background-color: aliceblue;
 
 
@@ -24,10 +23,4 @@ body, html {
   
 h1 {
     color: black    ; /* Ajusta el color del texto para que sea visible sobre la imagen */
-}
-.busqueda{
-    background-color: aliceblue;
-    padding: 20px;
-    border-radius: 10px;
-
 }
