@@ -56,7 +56,11 @@
     <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button type="submit">Buscar</button>
   
     <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button  (click)="limpiarFiltro()">Reiniciar filtros</button>
-
+    
+    
+    <button *ngIf="sharedService.isChecked" style="background-color: rgb(209, 186, 11); color: white;" (click)="agregar()" mat-raised-button>
+      Agregar estancia
+    </button>
 
   </div>
 

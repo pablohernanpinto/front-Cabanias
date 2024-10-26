@@ -107,6 +107,10 @@ export class BuscarPorFechaComponent {
 
   }
 
+  agregar(){
+    console.log('aqui')
+  }
+
 
   ngOnInit() {
     const url = 'http://localhost:3000/estancias';
