@@ -1,0 +1,126 @@
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span (click)="closeDialog()" class="close">&times;</span>
+      <h2>Agregar Estancia</h2>
+    </div>
+    <div class="modal-body">
+      <ng-container>
+        <br>
+        <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
+
+
+          <!-- {
+    "nombre": "Cabaña 1",
+    "tipo": "Cabaña",
+    "precio_noche": 30000,
+    "camas_individuales": 2,
+    "camas_dobles": 2,
+    "disponibilidad": "true",
+    "cocina": "true",
+    "calefont": "true"
+} -->
+
+          <div class="orden">
+
+            <mat-form-field class="full-width">
+              <mat-label>Nombre</mat-label>
+              <input formControlName='nombre' matInput placeholder="Cabaña 1" value="" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Camas individuales</mat-label>
+              <mat-select formControlName="tipo" required>
+                <mat-option value="Habitacion">Habitacíon</mat-option>
+                <mat-option value="Cabaña">Cabaña</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="orden">
+
+
+            <mat-form-field class="full-width">
+              <mat-label>Precio por noche</mat-label>
+              <input formControlName='precio_noche' type="number" matInput placeholder="35.000 " value="" required>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width">
+              <mat-label>Camas individuales</mat-label>
+              <mat-select formControlName="camas_individuales" required>
+                <mat-option [value]="0">0</mat-option>
+                <mat-option [value]="1">1</mat-option>
+                <mat-option [value]="2">2</mat-option>
+                <mat-option [value]="3">3</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+
+          </div>
+
+
+          <div class="orden">
+
+            <mat-form-field class="full-width">
+              <mat-label>Camas dobles</mat-label>
+              <mat-select formControlName=camas_dobles required>
+                <mat-option [value]="0">0</mat-option>
+                <mat-option [value]="1">1</mat-option>
+                <mat-option [value]="2">2</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width">
+              <mat-label>Disponibilidad</mat-label>
+              <mat-select formControlName=disponibilidad required>
+                <mat-option value="true">Si</mat-option>
+                <mat-option value="false">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="orden">
+
+            <mat-form-field class="full-width">
+              <mat-label>Cocina</mat-label>
+              <mat-select formControlName=cocina required>
+                <mat-option value="true">Si</mat-option>
+                <mat-option value="false">No</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width">
+              <mat-label>Calefont</mat-label>
+              <mat-select formControlName=calefont required>
+                <mat-option value="true">Si</mat-option>
+                <mat-option value="false">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+
+
+          <div class="orden">
+
+            <button mat-raised-button color="primary" (click)="addUsuarios()" type="submit">Agregar</button>
+
+          </div>
+
+        </form>
+        <br>
+      </ng-container>
+    </div>
+  </div>
+</div>
