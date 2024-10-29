@@ -30,6 +30,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmacionBorradoComponent } from './components/modals/confirmacion-borrado/confirmacion-borrado.component';
+import { AgregarEstanciaComponent } from './components/modals/agregar-estancia/agregar-estancia.component';
+import { MatInputModule } from '@angular/material/input';
+import { ModificarEstanciaComponent } from './components/modals/modificar-estancia/modificar-estancia.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,12 @@ import { ConfirmacionBorradoComponent } from './components/modals/confirmacion-b
     BodyComponent,
     BuscarPorFechaComponent,
     ListadoComponent,
-    ConfirmacionBorradoComponent
+    ConfirmacionBorradoComponent,
+    AgregarEstanciaComponent,
+    ModificarEstanciaComponent
   ],
   imports: [
+    MatInputModule,
     MatDialogModule,
     MatSidenavModule,
     MatSlideToggleModule,

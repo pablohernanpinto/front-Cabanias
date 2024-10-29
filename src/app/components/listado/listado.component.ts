@@ -55,8 +55,10 @@ import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/con
 
   ngOnInit() {
     this.dataService.data$.subscribe((data) => {
+
       this.datosRecibidos = data; // Actualiza con los datos recibidos
       this.dataSource = this.datosRecibidos; // Asigna los datos recibidos al dataSource
+      
     });
     
     this.http.get('http://localhost:3000/reservas/').subscribe((reservas: any) => {

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { EnvioDataService } from '../envio-data.service';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
+import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-buscar-por-fecha',
@@ -26,7 +28,7 @@ export class BuscarPorFechaComponent {
     private dataService: EnvioDataService,
     private router: Router,
     public sharedService: SharedService,
-
+    public dialog: MatDialog
   ) {
     this.myForm = this.fb.group({
       fecha_inicio: [''], // Ajustado a "fecha_inicio"
@@ -96,9 +98,11 @@ export class BuscarPorFechaComponent {
       }
 
     }
-    console.log(this.myForm.value,'estoo')
-    console.log(this.enviar)
+
     this.data= this.enviar
+    
+
+    console.log(this.enviar,'esteeee esesssssesesse')
     this.dataService.updateData(this.enviar);
   }
   
@@ -107,9 +111,10 @@ export class BuscarPorFechaComponent {
 
   }
 
-  agregar(){
-    console.log('aqui')
+  agregar(): void {
+    const dialogRef = this.dialog.open(AgregarEstanciaComponent);
   }
+
 
 
   ngOnInit() {
@@ -121,4 +126,6 @@ export class BuscarPorFechaComponent {
 
     });
   }
+
+  
 }
