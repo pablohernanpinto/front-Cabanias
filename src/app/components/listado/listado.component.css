@@ -1,101 +1,118 @@
-table {
-    width: 100%;
+/* Contenedor principal del componente */
+:host {
+  display: block;
+  max-width: 100%; /* Limitar a ancho completo del contenedor */
+  overflow: hidden;
+  background-color: aliceblue; /* Color de fondo que quieres en el contenedor principal */
+  padding: 16px;
+  border-radius: 8px; /* Redondeado opcional */
 }
 
+/* Tabla */
+table {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: white; /* Fondo para la tabla */
+
+}
+
+/* Filas de detalles y hover */
 tr.example-detail-row {
-    height: 0;
+  height: 0;
 }
 
 tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
+  background: aliceblue;
 }
 
 tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
+  background: #efefef;
 }
 
+/* Detalle y expansión */
 .example-element-row td {
-    border-bottom-width: 0;
+  border-bottom-width: 0;
 }
 
 .example-element-detail {
-    overflow: hidden;
-    display: flex;
+  overflow: hidden;
+  display: flex;
+  max-width: 100%;
 }
 
+/* Otros elementos */
 .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 104px;
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
 }
 
 .example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
 }
 
 .example-element-description {
-    padding: 16px;
+  padding: 16px;
 }
 
-.example-element-description-attribution {
-    opacity: 0.5;
+.botonesSlide {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-inline: 10px;
 }
 
-.botonesSlide{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    padding-inline: 10px;
-}
-
+/* Popup y animaciones */
 .popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(128, 128, 128, 0.5); /* Fondo gris difuminado */
-    backdrop-filter: blur(5px); /* Efecto difuminado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 300ms ease-in; /* Animación de entrada */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 300ms ease-in;
+}
 
-  .popup {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-50px); /* Posición inicial para la animación */
-    animation: slideIn 300ms ease-in forwards; /* Animación de entrada */
-  }
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-50px);
+  animation: slideIn 300ms ease-in forwards;
+}
 
-  button {
-    margin: 5px;
-  }
+button {
+  margin: 5px;
+}
 
-  @keyframes fadeIn {
-    from {
+/* Animaciones */
+@keyframes fadeIn {
+  from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
+  to {
+      opacity: 1;
+  }
+}
 
-  @keyframes slideIn {
-    from {
+@keyframes slideIn {
+  from {
       transform: translateY(-50px);
       opacity: 0;
-    }
-    to {
+  }
+  to {
       transform: translateY(0);
       opacity: 1;
-    }
   }
+}

@@ -133,7 +133,6 @@ export class BuscarPorFechaComponent {
     }
 
     this.data= this.enviar
-    
 
     //console.log(this.enviar,'esteeee esesssssesesse')
     this.dataService.updateData(this.enviar);

@@ -11,7 +11,7 @@
 <body>
   <br>
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-    
+    <!-- Columnas de la tabla -->
     <ng-container *ngFor="let column of columnsToDisplay" [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef> {{ columnNamesMap[column] }} </th>
       <td mat-cell *matCellDef="let element">
@@ -25,7 +25,6 @@
         </ng-template>
       </td>
     </ng-container>
-    
 
     <!-- Columna expand -->
     <ng-container matColumnDef="expand">
@@ -43,32 +42,25 @@
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
         <div class="example-element-detail" [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
-
           <div class="example-element-description">
-            <p>id: {{element.id_estancia}}</p>
-            <p>Camas Dobles: {{element.camas_dobles}}</p>
-            <p>Camas Individuales: {{element.camas_individuales}}</p>
-            <p>Calefont: {{element.calefont ? 'Sí' : 'No'}}</p>
-            <p>Cocina: {{element.cocina ? 'Sí' : 'No'}}</p>
-            <p>Disponibilidad: {{element.disponibilidad ? 'Disponible' : 'No Disponible'}}</p>
-            <br>
-
-
+ 
+            <br> 
             <div class="botonesSlide">
-              <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button>
-                Reservar
-              </button>
-              <button *ngIf="sharedService.isChecked" style="background-color: rgb(209, 186, 11); color: white;" mat-raised-button>
-                modificar
-              </button>
-              <button *ngIf="sharedService.isChecked"  (click)="openDialog(element.id_estancia)" style="background-color: rgb(6, 120, 29); color: white;" mat-raised-button>
-                Eliminar
-              </button>
-             <!--  {{element.id_estancia}} -->
+
+              <!-- aqui esta el date picker para realizar reserva -->
+
+
+
+
+              <!-- aqui termina el date picker -->
+
+
+              <button style="background-color: rgb(191, 12, 60); color: white;"  (click)="agregarReserva(element.id_estancia)"mat-raised-button>Reservar</button>
+              <button *ngIf="sharedService.isChecked" (click)="modificar(element.id_estancia)"
+                style="background-color: rgb(209, 186, 11); color: white;" mat-raised-button>modificar</button>
+              <button *ngIf="sharedService.isChecked" (click)="openDialog(element.id_estancia)"
+                style="background-color: rgb(6, 120, 29); color: white;" mat-raised-button>Eliminar</button>
             </div>
-
-            
-
           </div>
         </div>
       </td>
@@ -85,8 +77,11 @@
 
     <!-- Fila expandida -->
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-
   </table>
+
+  <!-- Paginador -->
+  <mat-paginator style="border-top: 2px solid grey;" [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons></mat-paginator>
 
 </body>
 

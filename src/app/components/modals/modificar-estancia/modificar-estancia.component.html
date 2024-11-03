@@ -1,1 +1,126 @@
-<p>modificar-estancia works!</p>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Modificar estancia</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+          <br>
+          <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
+  
+  
+            <!-- {
+      "nombre": "Cabaña 1",
+      "tipo": "Cabaña",
+      "precio_noche": 30000,
+      "camas_individuales": 2,
+      "camas_dobles": 2,
+      "disponibilidad": "true",
+      "cocina": "true",
+      "calefont": "true"
+  } -->
+  
+            <div class="orden">
+  
+              <mat-form-field class="full-width">
+                <mat-label>Nombre</mat-label>
+                <input formControlName='nombre' matInput placeholder="Valor anterior: {{estanciaModificar.nombre}}" value="" >
+              </mat-form-field>
+  
+              <mat-form-field class="full-width">
+                <mat-label>Camas individuales</mat-label>
+                <mat-select formControlName="tipo" placeholder="Valor anterior: {{estanciaModificar.tipo}}" >
+                  <mat-option value="Habitacion">Habitacíon</mat-option>
+                  <mat-option value="Cabaña">Cabaña</mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div>
+  
+  
+            <div class="orden">
+  
+  
+              <mat-form-field class="full-width">
+                <mat-label>Precio por noche</mat-label>
+                <input formControlName='precio_noche' placeholder="Valor anterior: {{estanciaModificar.precio_noche}}" type="number" matInput placeholder="35.000 " value="" >
+              </mat-form-field>
+  
+  
+  
+              <mat-form-field class="full-width">
+                <mat-label>Camas individuales</mat-label>
+                <mat-select formControlName="camas_individuales" placeholder="Valor anterior: {{estanciaModificar.camas_individuales}}" >
+                  <mat-option [value]="0">0</mat-option>
+                  <mat-option [value]="1">1</mat-option>
+                  <mat-option [value]="2">2</mat-option>
+                  <mat-option [value]="3">3</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+  
+            </div>
+  
+  
+            <div class="orden">
+  
+              <mat-form-field class="full-width">
+                <mat-label>Camas dobles</mat-label>
+                <mat-select formControlName=camas_dobles placeholder="Valor anterior: {{estanciaModificar.camas_dobles}}" >
+                  <mat-option [value]="0">0</mat-option>
+                  <mat-option [value]="1">1</mat-option>
+                  <mat-option [value]="2">2</mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+  <!--  <p>Calefont: {{element.calefont ? 'Sí' : 'No'}}</p> -->
+  
+              <mat-form-field class="full-width">
+                <mat-label>Disponibilidad</mat-label>
+                <mat-select formControlName=disponibilidad placeholder="Valor anterior: {{estanciaModificar.disponibilidad ? 'Disponible' : 'No Disponible'}}" >
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div>
+  
+  
+            <div class="orden">
+  
+              <mat-form-field class="full-width">
+                <mat-label>Cocina</mat-label>
+                <mat-select formControlName=cocina placeholder="Valor anterior: {{estanciaModificar.cocina ? 'Si' : 'No'}}" >
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+  
+                </mat-select>
+              </mat-form-field>
+  
+  
+  
+              <mat-form-field class="full-width">
+                <mat-label>Calefont</mat-label>
+                <mat-select formControlName=calefont placeholder="Valor anterior: {{estanciaModificar.calefont ? 'Si' : 'No'}}" >
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div>
+  
+  
+  
+            <div class="orden">
+  
+              <button mat-raised-button color="primary" (click)="addUsuarios()" type="submit">Agregar</button>
+  
+            </div>
+  
+          </form>
+          <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>

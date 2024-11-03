@@ -34,6 +34,7 @@ import { AgregarEstanciaComponent } from './components/modals/agregar-estancia/a
 import { MatInputModule } from '@angular/material/input';
 import { ModificarEstanciaComponent } from './components/modals/modificar-estancia/modificar-estancia.component';
 import { LoginComponent } from './components/login/login.component';
+import { AgregarReservaComponent } from './components/modals/agregar-reserva/agregar-reserva.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginComponent } from './components/login/login.component';
     ConfirmacionBorradoComponent,
     AgregarEstanciaComponent,
     ModificarEstanciaComponent,
-    LoginComponent
+    LoginComponent,
+    AgregarReservaComponent
   ],
   imports: [
     MatInputModule,
