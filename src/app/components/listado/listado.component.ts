@@ -1,8 +1,8 @@
 import { Component, Input, signal,inject } from '@angular/core';
-import { EnvioDataService } from '../envio-data.service';
+import { EnvioDataService } from '../servicios/envioData/envio-data.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { SharedService } from 'src/app/shared.service';
+import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/confirmacion-borrado.component';
 

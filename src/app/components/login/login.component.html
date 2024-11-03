@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    
+    <div class="paraPadding"></div>
+    <div class="cuadroLogin">
+      <div id="Imagen">
+        <br>
+        <h1>Administrador de cabañas</h1>
+        <br><br>
+      </div>
+      <nav id="inputs">
+        <input id="username" class="fname" formControlName="username" placeholder="Email" required>
+        <br><br><br>
+        <input id="username2" class="fname" type="password" formControlName="password" placeholder="Contraseña" required>
+        <br><br><br>
+        <button type="submit" style="font-family: 'Poppins', sans-serif;">Iniciar Sesión</button>
+        <nav style="margin-top: 2px;"></nav>
+      </nav>
+    </div>
+  </form>
+  

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
+import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 
 @Component({
   selector: 'app-body',

@@ -33,6 +33,7 @@ import { ConfirmacionBorradoComponent } from './components/modals/confirmacion-b
 import { AgregarEstanciaComponent } from './components/modals/agregar-estancia/agregar-estancia.component';
 import { MatInputModule } from '@angular/material/input';
 import { ModificarEstanciaComponent } from './components/modals/modificar-estancia/modificar-estancia.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModificarEstanciaComponent } from './components/modals/modificar-estanc
     ListadoComponent,
     ConfirmacionBorradoComponent,
     AgregarEstanciaComponent,
-    ModificarEstanciaComponent
+    ModificarEstanciaComponent,
+    LoginComponent
   ],
   imports: [
     MatInputModule,

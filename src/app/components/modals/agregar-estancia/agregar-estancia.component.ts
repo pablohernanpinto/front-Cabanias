@@ -1,6 +1,6 @@
 import { Component,  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { SharedService } from 'src/app/shared.service';
+import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 

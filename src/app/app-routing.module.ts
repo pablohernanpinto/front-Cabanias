@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ListadoComponent } from './components/listado/listado.component';
 import { BodyComponent } from './components/body/body.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: BodyComponent }, // Ruta por defecto
-  { path: 'listado', component: ListadoComponent }, // Ruta para About
-  //{ path: 'Buscar', component: PageComponent  }, // ADMIN + USUARIO PRIVILEGIO 
+  { path: 'Page', component: BodyComponent }, // Ruta para '/Page'
+  { path: 'login', component: LoginComponent }, // Ruta para '/Page'
+  
+  { path: '', redirectTo: '/Page', pathMatch: 'full' }, // Redirección opcional a la página por defecto
+  { path: '**', redirectTo: '/Page' } // Manejo de rutas no encontradas
 
 
 ];

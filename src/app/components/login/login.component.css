@@ -1,0 +1,80 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que body y html ocupen el 100% del alto de la ventana */
+    background-color: #253e85;
+  
+  }
+  
+
+  
+  .contenedor {
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  }
+  
+    .cuadroLogin {
+    border-color: #253e85;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+    padding: 20px;
+    color: #253e85;
+    text-align: center;
+    align-items: center;
+    border-radius: 40px;
+    max-width: 300px;
+    margin: auto;
+    padding-top: 30px;
+  }
+  
+  .fname {
+    border: none;
+    font-size: larger;
+    border-bottom: 2px solid #253e85;
+    outline: none;
+  }
+  
+  ::placeholder {
+    color: rgba(37, 62, 133, 0.5);
+  }
+  
+  button {
+    background-color: white;
+    border-color: #253e85;
+    border-radius: 5cm;
+    color: #253e85;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  button {
+    transition-duration: 0.4s;
+  }
+  
+  button:hover {
+    background-color: #253e85;
+    color: white;
+  }
+  
+  
+  body {
+    background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+    background-position: center; /* Posición de la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+  }
+
+  img {
+    display: flex;
+    flex: 1;
+    padding-top: 500px;    
+}
+.paraPadding{
+    padding-top: 50px;
+}
+  
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
-import { SharedService } from 'src/app/shared.service';
+import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 
 @Component({
   selector: 'app-header',
