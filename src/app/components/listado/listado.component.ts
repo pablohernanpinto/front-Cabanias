@@ -1,10 +1,16 @@
-import { Component, Input, signal,inject } from '@angular/core';
+import { Component, Input, signal,inject, ViewChild } from '@angular/core';
 import { EnvioDataService } from '../envio-data.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from 'src/app/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/confirmacion-borrado.component';
+import { ModificarEstanciaComponent } from '../modals/modificar-estancia/modificar-estancia.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
+import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
+import { AgregarReservaComponent } from '../modals/agregar-reserva/agregar-reserva.component';
 
 @Component({
   selector: 'app-listado',
@@ -17,29 +23,25 @@ import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/con
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
-})export class ListadoComponent {
-  constructor(private dataService: EnvioDataService,
-              private http: HttpClient,
-              public sharedService: SharedService,
-              public dialog: MatDialog
-
+})
+export class ListadoComponent {
+  constructor(
+    private dataService: EnvioDataService,
+    private http: HttpClient,
+    public sharedService: SharedService,
+    public dialog: MatDialog,
   ) {}
 
-
-  myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0 && day !== 6;
-  };
   @Input() data: any[] = [];
-  dataSource = this.data;
+  dataSource = new MatTableDataSource(this.data);
   expanded: boolean = false;
-  columnsToDisplay = ['nombre', 'calefont','cocina', 'camas_dobles', 'camas_individuales',  'precio_noche', 'tipo'];
+  columnsToDisplay = ['nombre', 'calefont', 'cocina', 'camas_dobles', 'camas_individuales', 'precio_noche', 'tipo'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: InfoCabania | null | undefined;
   readonly panelOpenState = signal(false);
   datosRecibidos: any = [];
-  reservas: any = []; 
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;  // Agrega el ViewChild para el paginador
 
   columnNamesMap: { [key: string]: string } = {
     'nombre': 'Nombre',
@@ -51,32 +53,40 @@ import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/con
     'tipo': 'Tipo de cabaña'
   };
 
-  
-
   ngOnInit() {
-    this.dataService.data$.subscribe((data) => {
 
-      this.datosRecibidos = data; // Actualiza con los datos recibidos
-      this.dataSource = this.datosRecibidos; // Asigna los datos recibidos al dataSource
-      
+    this.dataService.data$.subscribe((data) => {
+      this.datosRecibidos = data;
+      this.dataSource.data = this.datosRecibidos;
     });
     
-    this.http.get('http://localhost:3000/reservas/').subscribe((reservas: any) => {
-      this.reservas = reservas
-      console.log(this.reservas,'reservas')
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;  // Asigna el paginador después de inicializar la vista
+  }
+
+  modificar(id: number): void {
+    this.dialog.open(ModificarEstanciaComponent, {
+      data: { message: id }
     });
   }
 
-
-  openDialog(id:number): void {
-    const dialogRef = this.dialog.open(ConfirmacionBorradoComponent, {
+  openDialog(id: number): void {
+    this.dialog.open(ConfirmacionBorradoComponent, {
       width: '300px',
       data: { message: id }
     });
   }
 
+  agregarReserva(id: number): void {
+    this.dialog.open(AgregarReservaComponent, {
+      data: { message: id }
+    });
+  }
 
 }
+
 
 export interface InfoCabania {
   id_estancia: number;

@@ -100,9 +100,7 @@ export class BuscarPorFechaComponent {
     }
 
     this.data= this.enviar
-    
 
-    console.log(this.enviar,'esteeee esesssssesesse')
     this.dataService.updateData(this.enviar);
   }
   
@@ -121,7 +119,6 @@ export class BuscarPorFechaComponent {
     const url = 'http://localhost:3000/estancias';
     this.http.get(url).subscribe((data: any) => {
       this.data = data
-      console.log(this.data,'aquiii')
       this.dataService.updateData(this.data);
 
     });

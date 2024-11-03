@@ -45,10 +45,10 @@
 
 
     <!-- Checkbox Calefón -->
-    <p><mat-checkbox formControlName="calefont">Calefón</mat-checkbox></p>
+    <p><mat-checkbox formControlName="calefont" required>Calefón</mat-checkbox></p>
 
     <!-- Checkbox Cocina -->
-    <p><mat-checkbox formControlName="cocina">Cocina</mat-checkbox></p>
+    <p><mat-checkbox formControlName="cocina" required>Cocina</mat-checkbox></p>
   </div>
   <!-- Botón de Buscar -->
   <div style="display: flex; flex-direction: row; gap: 10px;">
@@ -57,9 +57,7 @@
   
     <button style="background-color: rgb(191, 12, 60); color: white;" mat-raised-button  (click)="limpiarFiltro()">Reiniciar filtros</button>
     
-    
-
-
+  
   </div>
 
 </form>
