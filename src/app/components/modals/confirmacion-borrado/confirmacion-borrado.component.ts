@@ -16,6 +16,7 @@ export class ConfirmacionBorradoComponent {
 
 
   onConfirm(): void {
+    console.log('aqui estoy')
     console.log(this.data.message,'mensaje recibido')
     this.dialogRef.close(true);
     this.http.delete('http://localhost:3000/estancias/'+this.data.message)

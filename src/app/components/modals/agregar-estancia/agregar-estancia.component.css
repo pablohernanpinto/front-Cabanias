@@ -3,46 +3,49 @@ input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
-  
-  .boton {
+}
+
+.boton {
     padding-top: 50px;
-    margin: 0 auto; /* Esto centrará el formulario horizontalmente */
-    text-align: start; /* Esto centrará el contenido del formulario */
+    margin: 0 auto;
+    /* Esto centrará el formulario horizontalmente */
+    text-align: start;
+    /* Esto centrará el contenido del formulario */
     width: 1500px;
-  }
-  
-  button {
+}
+
+button {
     text-align: start;
     font-size: medium;
     background-color: #253e85;
-    border-radius: 5px; /* Cambiado de 5cm a 5px */
+    border-radius: 5px;
+    /* Cambiado de 5cm a 5px */
     color: white;
     padding: 16px 32px;
     text-align: center;
     transition-duration: 0.4s;
     cursor: pointer;
-  }
-  
+}
 
-  .full-width{
-    width: 50%;
-  }
 
-  button:hover {
+.full-width {
+    width: 100%;
+}
+
+button:hover {
     background-color: #869ad1;
     color: white;
-  }
-  
-  .volverButton {
+}
+
+.volverButton {
     padding-right: 10px;
-  }
-  
-  .Fechas {
+}
+
+.Fechas {
     padding-left: 100px;
-  }
-  
-  .modal {
+}
+
+.modal {
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -53,9 +56,9 @@ input[type=text] {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     border-radius: 10px;
     position: relative;
     background-color: #fefefe;
@@ -68,70 +71,86 @@ input[type=text] {
     -webkit-animation-duration: 0.5s;
     animation-name: animatetop;
     animation-duration: 0.5s;
-  }
-  
-  @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-  }
-  
-  @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-  }
-  
-  .close {
+}
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.close {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
-  
-  .modal-header {
+}
+
+.modal-header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 2px 16px;
     background-color: rgb(16, 0, 79);
     color: white;
-  }
-  
-  .modal-body {
+}
+
+.modal-body {
     padding: 2px 16px;
-  }
-  
-  .orden {
+}
+
+.orden {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-  }
-  
-  input {
+}
+
+input {
     margin-right: 10px;
-  }
-  
-  .formulario {
+}
+
+.formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  }
-  
-  .seleccion, .input, select {
+}
+
+.seleccion,
+.input,
+select {
     flex: 1;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-  }
-  
-  .orden {
+}
+
+.orden {
     display: flex;
     gap: 10px;
     width: 97%;
-  }
+}

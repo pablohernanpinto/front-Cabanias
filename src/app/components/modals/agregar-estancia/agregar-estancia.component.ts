@@ -1,7 +1,5 @@
 import { Component,  } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder,  Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -33,21 +31,6 @@ export class AgregarEstanciaComponent {
 
   addUsuarios() {
     if (this.formulario.valid) {
-
-
-
-      const intento = {
-        nombre: "Cabaña 25",
-        tipo: "Cabaña",
-        precio_noche: 30000,
-        camas_individuales: 2,
-        camas_dobles: 2,
-        disponibilidad: "true",
-        cocina: "true",
-        calefont: "true"
-    }
-    console.log(this.formulario.value, ' este es mi ingreso ')
-    console.log(intento, 'este es prueba sintetica') 
 
       this.http.post('http://localhost:3000/estancias', this.formulario.value).subscribe(
           (data) => {

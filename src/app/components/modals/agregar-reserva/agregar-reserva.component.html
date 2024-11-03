@@ -9,8 +9,9 @@
                 <br>
                 <form [formGroup]="formulario" (ngSubmit)="AgregarReserva()">
 
+
                     <div class="orden">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Fecha de inicio</mat-label>
                             <input matInput [matDatepickerFilter]="isDateAvailable" [matDatepicker]="picker1"
                                 formControlName="fecha_inicio"> <!-- Usa formControlName -->
@@ -18,7 +19,7 @@
                             <mat-datepicker #picker1></mat-datepicker>
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill">
+                        <mat-form-field class="full-width" appearance="fill">
                             <mat-label>Fecha de fin</mat-label>
                             <input matInput [matDatepickerFilter]="isDateAvailable" [matDatepicker]="picker2"
                                 formControlName="fecha_fin"> <!-- Usa formControlName -->
