@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-buscar-por-fecha',
@@ -30,8 +31,11 @@ export class BuscarPorFechaComponent {
     private dataService: EnvioDataService,
     private router: Router,
     public sharedService: SharedService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public authService: AuthService,
+    
   ) {
+
     this.myForm = this.fb.group({
       fecha_inicio: [''], // Ajustado a "fecha_inicio"
       fecha_termino: [''], // Ajustado a "fecha_termino"

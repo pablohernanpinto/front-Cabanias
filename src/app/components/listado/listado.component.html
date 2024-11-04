@@ -56,9 +56,9 @@
 
 
               <button style="background-color: rgb(191, 12, 60); color: white;"  (click)="agregarReserva(element.id_estancia)"mat-raised-button>Reservar</button>
-              <button *ngIf="sharedService.isChecked" (click)="modificar(element.id_estancia)"
+              <button *ngIf="authService.getRol() === 'Admin'" (click)="modificar(element.id_estancia)"
                 style="background-color: rgb(209, 186, 11); color: white;" mat-raised-button>modificar</button>
-              <button *ngIf="sharedService.isChecked" (click)="openDialog(element.id_estancia)"
+              <button *ngIf="authService.getRol() === 'Admin'" (click)="openDialog(element.id_estancia)"
                 style="background-color: rgb(6, 120, 29); color: white;" mat-raised-button>Eliminar</button>
             </div>
           </div>

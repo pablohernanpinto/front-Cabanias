@@ -57,7 +57,11 @@ export class AgregarReservaComponent {
       id_estancia: this.data.message,
       fecha_inicio: [null], // Control para la fecha de inicio
       fecha_fin: [null]    // Control para la fecha de fin
+      
     });
+
+
+
   };
   getUnavailableDates(reservas: any[]): Date[] {
     console.log(reservas)

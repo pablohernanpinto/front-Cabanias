@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
+import { AuthService } from '../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent {
 
   constructor(private router: Router,
               public sharedService: SharedService,
+              private authService: AuthService
   ){
 
   }
@@ -23,6 +25,11 @@ export class HeaderComponent {
   }
   onToggle(event: MatSlideToggleChange) {
     this.sharedService.isChecked = event.checked; // Actualiza la variable del servicio
+  }
+
+  cerrarSesion(){
+    this.authService.logout()
+    this.router.navigate(['/login']);
   }
   
 }

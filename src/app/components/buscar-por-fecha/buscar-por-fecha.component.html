@@ -60,9 +60,9 @@
   
   </div>
 
-</form>
+</form><!-- *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com -->
 <br>
-<button *ngIf="sharedService.isChecked" style="background-color: rgb(209, 186, 11); color: white;" (click)="agregar()" mat-raised-button>
+<button *ngIf="authService.getRol() === 'Admin'"  style="background-color: rgb(209, 186, 11); color: white;" (click)="agregar()" mat-raised-button>
   Agregar estancia
 </button>
 

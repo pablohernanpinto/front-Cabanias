@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="login()">
+<form (ngSubmit)="onLogin()" #loginForm="ngForm">
     
     <div class="paraPadding"></div>
     <div class="cuadroLogin">
@@ -8,13 +8,34 @@
         <br><br>
       </div>
       <nav id="inputs">
-        <input id="username" class="fname" formControlName="username" placeholder="Email" required>
+        <input class="fname" placeholder="E-mail" type="email" id="correo" name="correo" [(ngModel)]="correo" required>
         <br><br><br>
-        <input id="username2" class="fname" type="password" formControlName="password" placeholder="Contraseña" required>
+        <input  class="fname" placeholder="Contraseña" type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required>
         <br><br><br>
         <button type="submit" style="font-family: 'Poppins', sans-serif;">Iniciar Sesión</button>
         <nav style="margin-top: 2px;"></nav>
+        <p *ngIf="errorMessage">{{ errorMessage }}</p>
       </nav>
     </div>
   </form>
   
+
+<!-- 
+
+<h1>prueba de funcionamiento gpt</h1>
+
+
+<div>
+  <h2>Iniciar Sesión</h2>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <label for="correo">Correo:</label>
+    <input type="email" id="correo" name="correo" [(ngModel)]="correo" required />
+
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena" required />
+
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</div> -->

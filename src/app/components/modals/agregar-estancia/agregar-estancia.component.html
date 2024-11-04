@@ -8,19 +8,6 @@
       <ng-container>
         <br>
         <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
-
-
-          <!-- {
-    "nombre": "Cabaña 1",
-    "tipo": "Cabaña",
-    "precio_noche": 30000,
-    "camas_individuales": 2,
-    "camas_dobles": 2,
-    "disponibilidad": "true",
-    "cocina": "true",
-    "calefont": "true"
-} -->
-
           <div class="orden">
 
             <mat-form-field class="full-width">
@@ -29,7 +16,7 @@
             </mat-form-field>
 
             <mat-form-field class="full-width">
-              <mat-label>Camas individuales</mat-label>
+              <mat-label>Tipo</mat-label>
               <mat-select formControlName="tipo" required>
                 <mat-option value="Habitacion">Habitacíon</mat-option>
                 <mat-option value="Cabaña">Cabaña</mat-option>

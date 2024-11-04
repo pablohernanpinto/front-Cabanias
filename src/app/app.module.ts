@@ -16,7 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { ListadoComponent } from './components/listado/listado.component';
@@ -47,9 +47,12 @@ import { AgregarReservaComponent } from './components/modals/agregar-reserva/agr
     AgregarEstanciaComponent,
     ModificarEstanciaComponent,
     LoginComponent,
-    AgregarReservaComponent
+    AgregarReservaComponent,
+    
   ],
   imports: [
+    FormsModule ,// Asegúrate de agregar FormsModule aquí
+
     MatInputModule,
     MatDialogModule,
     MatSidenavModule,

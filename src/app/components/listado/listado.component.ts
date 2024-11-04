@@ -11,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
 import { AgregarReservaComponent } from '../modals/agregar-reserva/agregar-reserva.component';
+import { AuthService } from '../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-listado',
@@ -26,10 +27,13 @@ import { AgregarReservaComponent } from '../modals/agregar-reserva/agregar-reser
 })
 export class ListadoComponent {
   constructor(
+    private autService: AuthService,
     private dataService: EnvioDataService,
     private http: HttpClient,
     public sharedService: SharedService,
     public dialog: MatDialog,
+    public authService: AuthService,
+
   ) {}
 
   @Input() data: any[] = [];
@@ -45,7 +49,7 @@ export class ListadoComponent {
 
   columnNamesMap: { [key: string]: string } = {
     'nombre': 'Nombre',
-    'calefont': 'Calefacción',
+    'calefont': 'Calefont',
     'camas_dobles': 'Camas dobles',
     'camas_individuales': 'Camas individuales',
     'cocina': 'Cocina',
@@ -59,6 +63,7 @@ export class ListadoComponent {
       this.datosRecibidos = data;
       this.dataSource.data = this.datosRecibidos;
     });
+    console.log(this.autService.getRol(),'el rol')
     
   }
 

@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BodyComponent } from './components/body/body.component';
 import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './components/servicios/guard/auth.guard';
 
 const routes: Routes = [
-  { path: 'Page', component: BodyComponent }, // Ruta para '/Page'
-  { path: 'login', component: LoginComponent }, // Ruta para '/Page'
+  { path: 'login', component: LoginComponent },
+  { path: 'page',component: BodyComponent, canActivate: [authGuard]},
+
   
-  { path: '', redirectTo: '/Page', pathMatch: 'full' }, // Redirección opcional a la página por defecto
-  { path: '**', redirectTo: '/Page' } // Manejo de rutas no encontradas
-
-
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirección a la página de inicio de sesión por defecto
+  { path: '**', redirectTo: '/login' } // Manejo de rutas no encontradas
 ];
 
 @NgModule({

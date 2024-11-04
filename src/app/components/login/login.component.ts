@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup;
+  correo: string = '';
+  contrasena: string = '';
+  errorMessage: string = '';
+
 
   constructor(
+    private authService: AuthService, 
     private router: Router,
     private renderer: Renderer2,
     private fb: FormBuilder,
@@ -29,25 +35,23 @@ export class LoginComponent {
     this.renderer.setStyle(this.document.body, 'background-color', '#253e85');
   }
 
-  login() {
-    if (this.form.valid) {
-      const loginData = this.form.value;
-      this.http.post('https://localhost:7230/api/Usuario/Login', loginData).subscribe(
-        (data) => {
-          // Redirigir a la página principal después de un inicio de sesión exitoso
-          this.router.navigateByUrl('/page');
-        },
-        (error) => {
-          alert('Usuario invalido');
-          console.error(error);
-        }
-      );
-    } else {
-      alert('Formulario no válido');
-    }
+  onLogin(): void {
+    this.authService.login(this.correo, this.contrasena).subscribe({
+      next: (response) => {
+        this.authService.saveRol(response.rol)
+        this.authService.saveToken(response.token);
+        this.router.navigate(['/page']); // Redirige a la página de inicio o dashboard después de iniciar sesión
+      },
+      error: (err) => {
+        this.errorMessage = 'Correo o contraseña incorrectos';
+      }
+    });
   }
 
-  loginVisita() {
-    // Lógica para login de visita
-  }
+
+
+
+
+
+
 }
