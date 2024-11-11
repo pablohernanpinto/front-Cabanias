@@ -116,3 +116,14 @@ button {
       opacity: 1;
   }
 }
+
+
+.mat-elevation-z8 #tabla{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 1000px;
+
+}

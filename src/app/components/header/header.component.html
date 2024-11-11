@@ -21,11 +21,23 @@
           <mat-icon>person</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+
+          
+          <button *ngIf="authService.getRol() === 'Admin'"  mat-menu-item (click)="agregarUsuario()">
+            <mat-icon>person_add</mat-icon>
+            <span>Agregar usuario</span>
+          </button>
+
+
           <button mat-menu-item (click)="cerrarSesion()">
             <mat-icon>exit_to_app</mat-icon>
             <span>Cerrar sesión</span>
           </button>
+
+
         </mat-menu>
+
+        
       </mat-toolbar>
 
 </body>

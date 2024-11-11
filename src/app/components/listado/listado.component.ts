@@ -1,4 +1,4 @@
-import { Component, Input, signal,inject, ViewChild } from '@angular/core';
+import { Component, Input, signal, ViewChild } from '@angular/core';
 import { EnvioDataService } from '../servicios/envioData/envio-data.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
@@ -8,8 +8,6 @@ import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/con
 import { ModificarEstanciaComponent } from '../modals/modificar-estancia/modificar-estancia.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
-import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
 import { AgregarReservaComponent } from '../modals/agregar-reserva/agregar-reserva.component';
 import { AuthService } from '../servicios/auth/auth.service';
 
@@ -26,13 +24,14 @@ import { AuthService } from '../servicios/auth/auth.service';
   ],
 })
 export class ListadoComponent {
+  reservas: any;
   constructor(
-    private autService: AuthService,
     private dataService: EnvioDataService,
-    private http: HttpClient,
     public sharedService: SharedService,
     public dialog: MatDialog,
     public authService: AuthService,
+    private http: HttpClient,
+
 
   ) {}
 
@@ -58,12 +57,17 @@ export class ListadoComponent {
   };
 
   ngOnInit() {
+    const url = 'http://localhost:3000/reservas';
+    this.http.get(url).subscribe((data: any) => {
+      this.reservas = data
+      
+    })
 
     this.dataService.data$.subscribe((data) => {
       this.datosRecibidos = data;
       this.dataSource.data = this.datosRecibidos;
     });
-    console.log(this.autService.getRol(),'el rol')
+
     
   }
 
@@ -80,7 +84,7 @@ export class ListadoComponent {
   openDialog(id: number): void {
     this.dialog.open(ConfirmacionBorradoComponent, {
       width: '300px',
-      data: { message: id }
+      data: { message: id,tipoDeBorrado: 1,nombre: 'estancia' }
     });
   }
 
@@ -88,6 +92,26 @@ export class ListadoComponent {
     this.dialog.open(AgregarReservaComponent, {
       data: { message: id }
     });
+  }
+
+
+  // Función para alternar la expansión de la fila y capturar el ID
+  toggleRow(element: any): void {
+    // Si la fila está expandida, colapsarla; si no, expandirla
+    this.expandedElement = this.expandedElement === element ? null : element;
+
+    // Obtener el ID del elemento expandido y enviarlo a otra función
+    if (this.expandedElement) {
+      const idEstancia = this.expandedElement.id_estancia;
+      this.miFuncionParaEnviarID(idEstancia);
+    }
+  }
+
+  // Función para manejar el ID del elemento expandido
+  miFuncionParaEnviarID(id: number): void {
+    const reservasFiltradas = this.reservas.filter((reserva: { id_estancia: number; }) => reserva.id_estancia === Number(id));
+    this.dataService.envioFiltrados(reservasFiltradas)
+    // Lógica adicional para procesar el ID
   }
 
 }

@@ -3,6 +3,9 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/components/servicios/sharedService/shared.service';
 import { AuthService } from '../servicios/auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
+import { AgregarUsuarioComponent } from '../modals/agregar-usuario/agregar-usuario.component';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +18,11 @@ export class HeaderComponent {
   isChecked:boolean = true;
 
   constructor(private router: Router,
+              public dialog: MatDialog,
+
               public sharedService: SharedService,
-              private authService: AuthService
+              public authService: AuthService,
+              
   ){
 
   }
@@ -30,6 +36,10 @@ export class HeaderComponent {
   cerrarSesion(){
     this.authService.logout()
     this.router.navigate(['/login']);
+  }
+
+  agregarUsuario(){
+      this.dialog.open(AgregarUsuarioComponent);
   }
   
 }

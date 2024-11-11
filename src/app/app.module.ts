@@ -35,6 +35,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ModificarEstanciaComponent } from './components/modals/modificar-estancia/modificar-estancia.component';
 import { LoginComponent } from './components/login/login.component';
 import { AgregarReservaComponent } from './components/modals/agregar-reserva/agregar-reserva.component';
+import { AgregarUsuarioComponent } from './components/modals/agregar-usuario/agregar-usuario.component';
+import { ListadoReservasComponent } from './components/listado-reservas/listado-reservas.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { AgregarReservaComponent } from './components/modals/agregar-reserva/agr
     ModificarEstanciaComponent,
     LoginComponent,
     AgregarReservaComponent,
+    AgregarUsuarioComponent,
+    ListadoReservasComponent,
     
   ],
   imports: [

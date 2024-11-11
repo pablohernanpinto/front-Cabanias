@@ -11,21 +11,28 @@ export class ConfirmacionBorradoComponent {
   constructor(
     private http: HttpClient,
     public dialogRef: MatDialogRef<ConfirmacionBorradoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { message: string }
+    @Inject(MAT_DIALOG_DATA) public data: { message: string,tipoDeBorrado: Number,nombre: String }
   ) {}
-
+  ngOnInit() {
+  }
 
   onConfirm(): void {
-    console.log('aqui estoy')
-    console.log(this.data.message,'mensaje recibido')
-    this.dialogRef.close(true);
-    this.http.delete('http://localhost:3000/estancias/'+this.data.message)
-    .subscribe();
 
+
+
+
+    if (this.data.tipoDeBorrado === 1){
+      console.log('voy a borrar estancia')
+
+      this.http.delete('http://localhost:3000/estancias/'+this.data.message)
+      .subscribe(); 
+    }
+    else{
+
+      this.http.delete('http://localhost:3000/reservas/'+this.data.message)
+      .subscribe(); 
+    }
     window.location.reload();
-
-
-
   }
 
   onCancel(): void {

@@ -1,0 +1,121 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span (click)="closeDialog()" class="close">&times;</span>
+            <h2>Agregar Estancia</h2>
+        </div>
+        <div class="modal-body">
+            <ng-container>
+                <br>
+
+                <!--       nombre:'', 
+      apellido:'', 
+      rut:'', 
+      correo:'', 
+      contrasena:'', 
+      rol: '' -->
+                <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
+                    <div class="orden">
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Nombre</mat-label>
+                            <input formControlName='nombre' matInput placeholder="Ej: Joaquin" value="" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>apellido</mat-label>
+                            <input formControlName='apellido' matInput placeholder="Ej: Montecinos" value="" required>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+                    <div class="orden">
+
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Rut</mat-label>
+                            <input formControlName='rut'  matInput placeholder="Ej: 11111111-1" value=""
+                                required>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>E-Mail</mat-label>
+                            <input formControlName='correo'  matInput placeholder="Joaquin@montecinos.com"
+                                value="" required>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+                    <div class="orden">
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Contraseña</mat-label>
+                            <input formControlName='contrasena'  matInput placeholder="Ej: abc1234" value=""
+                                required>
+                        </mat-form-field>
+
+
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Gestor</mat-label>
+                            <mat-select formControlName=rol required>
+                                <mat-option value="Admin">Administrador</mat-option>
+                                <mat-option value="Gestor">Gestor</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="orden">
+
+                        <button mat-raised-button color="primary" (click)="agregarUsuario()"   type="submit">Agregar</button>
+
+                    </div>
+
+                </form>
+                <br>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+
+
+<!--                <div class="orden">
+                        <mat-form-field class="full-width">
+                            <mat-label>Nombre</mat-label>
+                            <input formControlName='nombre' type="text" matInput placeholder="Joaquin" value="" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Apellido</mat-label>
+                            <input formControlName='apellido' type="text" matInput placeholder="Montecinos" value="" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="orden">
+                        <mat-form-field class="full-width">
+                            <mat-label>Rut</mat-label>
+                            <input formControlName='rut' type="text" matInput placeholder="11.111.111-1" value="" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>E-mail</mat-label>
+                            <input formControlName='correo' type="email" matInput placeholder="Joaquin@Montecinos.com" value="" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="orden">
+                        <mat-form-field class="full-width">
+                            <mat-label>Rol</mat-label>
+                            <mat-select formControlName="rol" required>
+                                <mat-option value="Admin">Administrador</mat-option>
+                                <mat-option value="Gestor">Gestor</mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div> -->
