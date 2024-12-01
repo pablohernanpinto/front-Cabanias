@@ -1,8 +1,34 @@
-<h2 mat-dialog-title>¿Esta seguro que desea eliminar {{data.nombre}}?</h2>
-<mat-dialog-actions>
-  <button mat-button  (click)="onCancel()">No</button>
+<div *ngIf="+data.tipoDeBorrado < 3">
+  <h2 mat-dialog-title>¿Está seguro que desea eliminar {{ data.nombre }}?</h2>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancel()">No</button>
+    <button 
+      style="background-color: rgb(191, 12, 60); color: white;" 
+      (click)="onConfirm()" 
+      mat-raised-button
+    >
+      Sí
+    </button>
+  </mat-dialog-actions>
+</div>
 
-  <button style="background-color: rgb(191, 12, 60);  color: white;" (click)="onConfirm()"mat-raised-button>
-    Si
-  </button>
-</mat-dialog-actions>
+
+<div *ngIf="+data.tipoDeBorrado === 3">
+  <h2 mat-dialog-title>El costo total de arriendo es</h2>
+
+  <h2 style="display: flex;padding-left: 150px;">$ {{ data.message | number:'1.0-0' }}</h2>
+
+
+
+  <h2 mat-dialog-title> ¿Desea confirmar reserva?</h2>
+
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancel()">No</button>
+    <button 
+      style="background-color: rgb(191, 12, 60); color: white;" 
+      (click)="onConfirm()"  
+      mat-raised-button>
+      Sí
+    </button>
+  </mat-dialog-actions>
+</div>

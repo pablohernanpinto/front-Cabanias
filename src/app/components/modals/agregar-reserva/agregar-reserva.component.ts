@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { ModificarEstanciaComponent } from '../modificar-estancia/modificar-estancia.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ConfirmacionBorradoComponent } from '../confirmacion-borrado/confirmacion-borrado.component';
 @Component({
   selector: 'app-agregar-reserva',
   templateUrl: './agregar-reserva.component.html',
@@ -15,9 +16,11 @@ export class AgregarReservaComponent {
   reservas: any;
   reservasFiltradas: any;
   constructor(
+    public dialog: MatDialog,
+
     private http: HttpClient,
     public dialogRef: MatDialogRef<ModificarEstanciaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { message: string },
+    @Inject(MAT_DIALOG_DATA) public data: { message: string, precio_noche: string },
     private formBuilder: FormBuilder
   ) { }
   formulario!: FormGroup;
@@ -25,28 +28,34 @@ export class AgregarReservaComponent {
   closeDialog() {
     window.location.reload();
   }
+
+  calcularPrecio() {
+    console.log(this.formulario.value.fecha_inicio, this.formulario.value.fecha_fin)
+
+    // Calcular la diferencia en milisegundos
+    const diferenciaEnMilisegundos = this.formulario.value.fecha_fin.getTime() - this.formulario.value.fecha_inicio.getTime();
+
+    // Convertir la diferencia de milisegundos a días
+    console.log(diferenciaEnMilisegundos / (1000 * 3600 * 24), 'dias')
+    this.formulario.value.monto_pago = Number(this.data.precio_noche) * (diferenciaEnMilisegundos / (1000 * 3600 * 24));
+
+
+  }
   AgregarReserva() {
+    console.log(this.formulario.valid, 'el formulario')
     if (this.formulario.valid) {
-      // Accede a los valores de las fechas seleccionadas
-      const { startDate, endDate } = this.formulario.value;
-      console.log(this.formulario.value, 'este es')
-      // Aquí puedes añadir la lógica para guardar la reserva
-      this.http.post('http://localhost:3000/reservas', this.formulario.value).subscribe(
-        (data) => {
-          alert('SE HA REGISTRADO LA RESERVA');
-          console.log(data);
-          window.location.reload();
-        },
-        (error) => {
-          console.log(this.formulario.value);
-          alert('ERROR AL REGISTRAR LA RESERVA');
-          console.error(error);
-        }
-      );
+      this.calcularPrecio()
+      this.dialog.open(ConfirmacionBorradoComponent, {
+        width: '400px',
+        data: { message: this.formulario.value.monto_pago, tipoDeBorrado: 3, formulario: this.formulario }
+      });
+
     } else {
       alert('INGRESO NO VALIDO');
     }
   }
+
+
   ngOnInit() {
     this.http.get('http://localhost:3000/reservas/').subscribe((reservas: any) => {
       this.reservas = reservas;
@@ -56,8 +65,10 @@ export class AgregarReservaComponent {
     this.formulario = this.formBuilder.group({
       id_estancia: this.data.message,
       fecha_inicio: [null], // Control para la fecha de inicio
-      fecha_fin: [null]    // Control para la fecha de fin
-      
+      fecha_fin: [null],  // Control para la fecha de fin
+      metodo_pago: '',
+      monto_pago: 0
+
     });
 
 
@@ -83,4 +94,10 @@ export class AgregarReservaComponent {
       unavailableDate => unavailableDate.getTime() === date.getTime()
     );
   };
+
+
+  Calcular_precio(fecha: any) {
+    console.log(fecha)
+
+  }
 }

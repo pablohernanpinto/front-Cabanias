@@ -28,10 +28,18 @@
                         </mat-form-field>
                     </div>
 
+                    <mat-form-field class="full-width">
+                        <mat-label>Metodo de pago</mat-label>
+                        <mat-select formControlName="metodo_pago" required>
+                            <mat-option value="Efectivo">Efectivo</mat-option>
+                            <mat-option value="Tarjeta">Tarjeta</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
                     <div class="orden">
                         <button mat-raised-button color="primary" type="submit">Agregar</button>
                     </div>
-                <br>
+                    <br>
                 </form>
             </ng-container>
         </div>

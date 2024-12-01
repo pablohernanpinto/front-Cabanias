@@ -59,6 +59,7 @@ export class ListadoComponent {
   ngOnInit() {
     const url = 'http://localhost:3000/reservas';
     this.http.get(url).subscribe((data: any) => {
+
       this.reservas = data
       
     })
@@ -66,9 +67,10 @@ export class ListadoComponent {
     this.dataService.data$.subscribe((data) => {
       this.datosRecibidos = data;
       this.dataSource.data = this.datosRecibidos;
+
     });
 
-    
+
   }
 
   ngAfterViewInit() {
@@ -89,9 +91,11 @@ export class ListadoComponent {
   }
 
   agregarReserva(id: number): void {
-    this.dialog.open(AgregarReservaComponent, {
-      data: { message: id }
-    });
+    console.log(id,'este es id')
+    console.log(this.dataSource.data.find(item => item.id_estancia === id).precio_noche,'este 2  ')
+     this.dialog.open(AgregarReservaComponent, {
+      data: { message: id, precio_noche: this.dataSource.data.find(item => item.id_estancia === id).precio_noche}
+    }); 
   }
 
 

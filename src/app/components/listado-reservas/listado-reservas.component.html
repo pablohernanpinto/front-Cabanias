@@ -28,7 +28,17 @@
         <td mat-cell *matCellDef="let element"> {{element.fecha_reserva | date:'short'}} </td>
       </ng-container>
   
-      <!-- Acción Column (icono) - Última columna -->
+      
+      <ng-container o matColumnDef="info_pago">
+        <th mat-header-cell *matHeaderCellDef>Informacion de pago</th>
+        <td  class = pagoArreglo mat-cell *matCellDef="let element">
+          <button  mat-icon-button (click)="borrarReserva(element.id_reserva)">
+            <mat-icon>payments</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
       <ng-container matColumnDef="accion">
         <th mat-header-cell *matHeaderCellDef> Eliminar </th>
         <td mat-cell *matCellDef="let element">
