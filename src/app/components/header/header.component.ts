@@ -6,6 +6,7 @@ import { AuthService } from '../servicios/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarEstanciaComponent } from '../modals/agregar-estancia/agregar-estancia.component';
 import { AgregarUsuarioComponent } from '../modals/agregar-usuario/agregar-usuario.component';
+import { ReportesComponent } from '../modals/reportes/reportes.component';
 
 @Component({
   selector: 'app-header',
@@ -40,6 +41,34 @@ export class HeaderComponent {
 
   agregarUsuario(){
       this.dialog.open(AgregarUsuarioComponent);
+  }
+
+  reportes(id:Number){
+    console.log(id)
+    if(id == 1){
+      this.dialog.open(ReportesComponent, {
+        width: '600px',
+        height:'100px',
+        data: { message: id}
+      });
+
+    }
+    if(id == 2){
+
+    }
+    if(id == 3){
+      this.dialog.open(ReportesComponent, {
+        width: '600px',
+        height:'100px',
+        data: { message: id }
+      });
+    }
+    if(id == 4){
+
+    }
+    if(id == 5){
+
+    }
   }
   
 }

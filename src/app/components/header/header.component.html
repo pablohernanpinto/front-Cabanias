@@ -14,6 +14,43 @@
         <a style="color: white; padding-left: 10px;" (click)="inicio()">Administrador cabañas</a>
 
         <span class="example-spacer"></span>
+        <button *ngIf="authService.getRol() === 'Admin'"  mat-icon-button [matMenuTriggerFor]="menuReportes" mat-icon-button class="example-icon"  aria-label="Example icon-button with a menu">
+          <mat-icon>task</mat-icon>
+        </button>
+        <mat-menu #menuReportes="matMenu">
+
+          
+          <button class="textoMenu" mat-menu-item (click)="reportes(1)">
+            <mat-icon class="icono">schedule</mat-icon>
+            <span>Duración media de la estadia (general)</span>
+          </button>
+
+
+          <button class="textoMenu" mat-menu-item (click)="reportes(2)">
+            <mat-icon class="icono">schedule</mat-icon>
+            <span>Duración media de la estadia (por periodo)
+            </span>
+          </button>
+
+          <button class="textoMenu" mat-menu-item (click)="reportes(3)">
+            <mat-icon class="icono">attach_money</mat-icon>
+            <span>Tarifa diaria promedio (general)
+            </span>
+          </button>
+
+          <button class="textoMenu" mat-menu-item (click)="reportes(4)">
+            <mat-icon class="icono">attach_money</mat-icon>
+            <span>Tarifa diaria promedio (por periodo)</span>
+          </button>
+          
+          <button class="textoMenu" mat-menu-item (click)="reportes(5)">
+            <mat-icon class="icono">currency_exchange</mat-icon>
+            <span>Incremento de ingresos por periodo
+            </span>
+          </button>
+
+
+        </mat-menu>
 
 
 

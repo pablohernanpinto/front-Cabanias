@@ -36,11 +36,11 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-<br>
-                <button mat-raised-button color="primary" (click) = 'confrimarPago()' >Confirmar pago</button>
+                <br>
+                <button *ngIf="pago[0].estado === 'Pendiente' " mat-raised-button color="primary"
+                    (click)='confrimarPago()'>Confirmar pago</button>
 
                 <br><br>
-
             </ng-container>
         </div>
     </div>

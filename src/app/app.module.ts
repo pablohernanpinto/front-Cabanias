@@ -38,6 +38,7 @@ import { AgregarReservaComponent } from './components/modals/agregar-reserva/agr
 import { AgregarUsuarioComponent } from './components/modals/agregar-usuario/agregar-usuario.component';
 import { ListadoReservasComponent } from './components/listado-reservas/listado-reservas.component';
 import { InformacionDePagoComponent } from './components/modals/informacion-de-pago/informacion-de-pago.component';
+import { ReportesComponent } from './components/modals/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { InformacionDePagoComponent } from './components/modals/informacion-de-p
     AgregarUsuarioComponent,
     ListadoReservasComponent,
     InformacionDePagoComponent,
+    ReportesComponent,
     
   ],
   imports: [
