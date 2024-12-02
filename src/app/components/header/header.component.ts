@@ -54,6 +54,12 @@ export class HeaderComponent {
 
     }
     if(id == 2){
+      this.dialog.open(ReportesComponent, {
+        width: '600px',
+        height:'400px',
+
+        data: { message: id }
+      });
 
     }
     if(id == 3){
@@ -64,10 +70,18 @@ export class HeaderComponent {
       });
     }
     if(id == 4){
-
+      this.dialog.open(ReportesComponent, {
+        width: '600px',
+        height:'400px',
+        data: { message: id }
+      });
     }
     if(id == 5){
+      this.dialog.open(ReportesComponent, {
+        width: '600px',
 
+        data: { message: id }
+      });
     }
   }
   

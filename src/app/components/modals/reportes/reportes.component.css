@@ -4,3 +4,9 @@
     align-items: center;
     padding-top: 10px;
 }
+
+.dos{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
