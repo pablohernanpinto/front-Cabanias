@@ -11,12 +11,15 @@ export class ConfirmacionBorradoComponent {
   constructor(
     private http: HttpClient,
     public dialogRef: MatDialogRef<ConfirmacionBorradoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { message: string,tipoDeBorrado: Number,nombre: String, formulario: any}
+    @Inject(MAT_DIALOG_DATA) public data: { message: string,tipoDeBorrado: Number,nombre: String, formulario: any, accion:string}
   ) {}
   ngOnInit() {
   }
 
   onConfirm(): void {
+    
+   
+    
     if (this.data.tipoDeBorrado === 1){
       console.log('voy a borrar estancia')
 
@@ -25,8 +28,20 @@ export class ConfirmacionBorradoComponent {
     }
     if ((this.data.tipoDeBorrado === 2)){
 
-      this.http.delete('http://localhost:3000/reservas/'+this.data.message)
-      .subscribe(); 
+      this.http.put('http://localhost:3000/reservas/cancelar/'+this.data.message,{}).subscribe(
+        (data) => {
+        
+          alert('SE HA CONFIRMADO PAGO');
+
+          window.location.reload(); 
+        },
+        (error) => {
+
+          console.error(error);
+          alert('ERROR EN LA MODIFICACION');
+          window.location.reload(); 
+        }
+      ); 
     }
     if ((this.data.tipoDeBorrado === 3)){
 

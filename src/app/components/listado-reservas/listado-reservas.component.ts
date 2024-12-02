@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EnvioDataService } from '../servicios/envioData/envio-data.service';
 import { ConfirmacionBorradoComponent } from '../modals/confirmacion-borrado/confirmacion-borrado.component';
 import { MatDialog } from '@angular/material/dialog';
+import { InformacionDePagoComponent } from '../modals/informacion-de-pago/informacion-de-pago.component';
 
 @Component({
   selector: 'app-listado-reservas',
@@ -33,14 +34,18 @@ export class ListadoReservasComponent {
   }
 
   borrarReserva(id: number): void {
-    // Aquí puedes agregar la lógica para manejar el clic en el icono
-    console.log('id de reserva:', id);
-
-
     this.dialog.open(ConfirmacionBorradoComponent, {
       width: '300px',
-      data: { message: id,tipoDeBorrado: 2,nombre: 'reserva' }
+      data: { message: id,tipoDeBorrado: 2,nombre: 'reserva', accion: 'cancelar' }
     });
+  }
+
+  informacionPago(id: number):void{
+    this.dialog.open(InformacionDePagoComponent, {
+      width: '300px',
+      data: { message: id,tipoDeBorrado: -1,nombre: 'pago', accion: 'confirmar' }
+    });
+
   }
 
   ngOnInit() {

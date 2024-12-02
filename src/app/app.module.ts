@@ -37,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AgregarReservaComponent } from './components/modals/agregar-reserva/agregar-reserva.component';
 import { AgregarUsuarioComponent } from './components/modals/agregar-usuario/agregar-usuario.component';
 import { ListadoReservasComponent } from './components/listado-reservas/listado-reservas.component';
+import { InformacionDePagoComponent } from './components/modals/informacion-de-pago/informacion-de-pago.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ListadoReservasComponent } from './components/listado-reservas/listado-
     AgregarReservaComponent,
     AgregarUsuarioComponent,
     ListadoReservasComponent,
+    InformacionDePagoComponent,
     
   ],
   imports: [

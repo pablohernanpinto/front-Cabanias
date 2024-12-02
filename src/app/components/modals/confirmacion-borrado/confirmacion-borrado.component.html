@@ -1,5 +1,5 @@
 <div *ngIf="+data.tipoDeBorrado < 3">
-  <h2 mat-dialog-title>¿Está seguro que desea eliminar {{ data.nombre }}?</h2>
+  <h2 mat-dialog-title>¿Está seguro que desea {{data.accion}} {{ data.nombre }}?</h2>
   <mat-dialog-actions>
     <button mat-button (click)="onCancel()">No</button>
     <button 

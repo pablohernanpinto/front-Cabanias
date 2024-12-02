@@ -75,9 +75,12 @@ export class AgregarReservaComponent {
 
   };
   getUnavailableDates(reservas: any[]): Date[] {
-    console.log(reservas)
+
+    const reservasFiltradas = reservas.filter(reserva => reserva.estado !== 'Cancelada');
+
+
     let unavailable: Date[] = [];
-    reservas.forEach(reserva => {
+    reservasFiltradas.forEach(reserva => {
       const start = new Date(reserva.fecha_inicio);
       const end = new Date(reserva.fecha_fin);
       let currentDate = start;
